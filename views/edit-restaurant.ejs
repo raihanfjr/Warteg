@@ -1,0 +1,46 @@
+<% include partials/header.ejs %>
+<div class="container">
+    <% if (message) { %>
+        <p class="text-center text-danger"><%= message %></p>
+    <% } %>
+
+    <% if (restaurant) { %>
+        <form class="add-restaurant-form" action="" method="post" enctype="multipart/form-data">
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="res-name">Restaurant Name</label>
+                    <input type="text" class="form-control" name="res_name" id="res-name" value="<%= restaurant.res_name %>" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="location">Location</label>
+                    <input type="text" class="form-control" name="location" id="location" value="<%= restaurant.location %>" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="short_name">Short Name</label>
+                    <input type="text" class="form-control" name="short_name" id="short_name" value="<%= restaurant.short_name %>" required disabled title="Username can't be changed">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="waktu_buka">Waktu buka</label>
+                    <input type="number" class="form-control" name="waktu_buka" id="waktu_buka" placeholder="waktu_buka" value="<%= restaurant.waktu_buka %>" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="type">Restaurant type</label>
+                    <select id="type" name="type" class="form-control" required>
+                        <option selected><%= restaurant.type %></option>
+                        <option>Restaurant</option>
+                        <option>Warteg</option>
+                        <option>Rumah makan</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success float-right">Update Restaurant</button>
+        </form>
+    <% } else { %>
+        <p class="text-center">Restaurant Not Found. Go <a href="/add">here</a> to add restaurant.</p>
+    <% } %>
+</div>
+</div>
+</body>
+</html>
